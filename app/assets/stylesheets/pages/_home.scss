@@ -1,1 +1,11 @@
 // Specific CSS for your home-page
+.home-page {
+  background-image: url('hunger_games_fond_d_ecran.jpeg');
+  background-size: cover;
+  height: 100vh;
+  color: white
+}
+
+.menu-card {
+  display: flex;
+}

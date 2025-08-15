@@ -2,11 +2,19 @@
   <h1>Your place to organise your watch list</h1>
   <div class="menu-card">
     <% @lists.each do |list| %>
-      <div class="list">
-        <h2><%= link_to list.name, list_path(list) %></h2>
-        <p>Created at: <%= list.created_at.strftime("%B %d, %Y") %></p>
-        <p>Last updated: <%= list.updated_at.strftime("%B %d, %Y") %></p>
-      </div>
+      <% if list.photo.attached? %>
+        <div class="cloud-list" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, height: 300, crop: :fill %>')" >
+          <h2><%= link_to list.name, list_path(list) %></h2>
+          <p>Last updated: <%= list.updated_at.strftime("%B %d, %Y") %></p>
+          <%= link_to 'Remove list', list_path(list), data: {turbo_method: :delete}, class: 'btn btn-danger' %>
+        </div>
+      <% else %>
+        <div class="simple-list">
+          <h2><%= link_to list.name, list_path(list) %></h2>
+          <p>Last updated: <%= list.updated_at.strftime("%B %d, %Y") %></p>
+          <%= link_to 'Remove list', list_path(list), data: {turbo_method: :delete}, class: 'btn btn-danger' %>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>

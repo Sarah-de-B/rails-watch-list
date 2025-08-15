@@ -1,10 +1,44 @@
-.list {
+.simple-list {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 20px;
+  gap: 5px;
+  padding: 10px;
   background-image: url('hunger_games_fond_d_ecran.jpeg');
   background-size: cover;
   color: white;
-  width: 40%;
+  // width: 40%;
+  height: 200px;
+
+  a {
+    text-decoration: none;
+    color: white;
+  };
+
+  border-radius: 20px;
+
+  :hover{
+    box-shadow: 2px 1px 1px grey;
+  };
+}
+
+.cloud-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px;
+  // background-size: cover;
+  color: white;
+  // width: 40%;
+  height:200px;
+  border-radius: 20px;
+
+  a {
+    text-decoration: none;
+    color: white;
+  };
+
+
+  :hover{
+    box-shadow: 2px 1px 1px grey;
+  };
 }

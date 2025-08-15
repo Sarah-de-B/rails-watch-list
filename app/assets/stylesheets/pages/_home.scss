@@ -1,11 +1,24 @@
 // Specific CSS for your home-page
 .home-page {
-  background-image: url('hunger_games_fond_d_ecran.jpeg');
+  background-image: url('fond_d_ecran_echec.jpeg');
   background-size: cover;
   height: 100vh;
-  color: white
+  color: white;
+  text-align: center;
+  background-color: black;
+
+  h1{
+    padding-top: 100px;
+  }
 }
 
 .menu-card {
-  display: flex;
+  position: relative;
+  top: 30vh;
+  width: 100%;
+  // margin: 30px;
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 4px;
+
 }

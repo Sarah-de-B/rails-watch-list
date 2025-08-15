@@ -1,17 +1,29 @@
-<h2>Movies from : <%= @list.name %></h2>
-
-<%= link_to "Add a new bookmark", new_list_bookmark_path(@list) %>
-<%# <% @bookmarks.each do |bookmark| %>
-<% @list.bookmarks.each do |bookmark| %>
-  <div class="bookmark">
-    <div class="movie-card">
-      <%= image_tag bookmark.movie.poster_url, alt: bookmark.movie.title, class: 'movie-poster' %>
-      <h3><%= bookmark.movie.title %></h3>
-      <p><%= bookmark.movie.overview %></p>
-    </div>
-    <p><%= bookmark.comment %></p>
-    <p>Added on: <%= bookmark.created_at.strftime("%B %d, %Y") %></p>
-    <%= link_to 'Delete', bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'btn btn-danger' %>
-    <%# # method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+<% if @list.photo.attached? %>
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @list.photo.key, crop: :fill %>')">
+    <h2>Movies from : <%= @list.name %></h2>
+  </div>
+<% else %>
+  <div class="simple-list">
+    <h2>Movies from : <%= @list.name %></h2>
   </div>
 <% end %>
+
+<%= link_to "Add a new bookmark", new_list_bookmark_path(@list), class: 'btn btn-success' %>
+<div class="bookmarks">
+  <% @list.bookmarks.each do |bookmark| %>
+    <div class="bookmark">
+      <div class="movie-card">
+        <%= image_tag bookmark.movie.poster_url, alt: bookmark.movie.title, class: 'movie-poster' %>
+        <h3><%= bookmark.movie.title %></h3>
+        <p><%= bookmark.movie.overview %></p>
+      </div>
+      <div class="bookmark-comment">
+        <h4>My comment:</h4>
+        <p><%= bookmark.comment %></p>
+        <p>Added on: <%= bookmark.created_at.strftime("%B %d, %Y") %></p>
+        <%= link_to 'Remove', bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'btn btn-danger' %>
+        <%# # method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+      </div>
+    </div>
+  <% end %>
+</div>

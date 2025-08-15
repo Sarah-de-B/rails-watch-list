@@ -1,0 +1,30 @@
+.bookmark {
+  display: flex;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 5px;
+  width: 400px;
+  height:auto;
+}
+
+.bookmark-comment {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px;
+  border-left: solid lightgrey;
+  text-align: center;
+  text-justify: center;
+
+  a {
+    width:fit-content;
+    position: relative;
+    top: 180;
+  };
+}
+
+.bookmarks {
+  display: flex;
+  // grid-template-columns: 1fr 60px;
+  flex-wrap: wrap;
+}
